@@ -344,14 +344,15 @@ $iecho= "c";
 		if($newpoints < 0)
 			$newpoints = 0;
 
-		if(mysql_real_escape_string(stripslashes($_POST['date'])) == "")
-			$_POST['date'] = date("Y-m-d H:i:s");
+		$postDate = mysql_real_escape_string(stripslashes($_POST['date']));
+		if($postDate == "")
+			$postDate = mysql_real_escape_string(date("Y-m-d H:i:s"));
 
 		$query = "select * from `notary` where `from`='".intval($_SESSION['profile']['id'])."' AND
 						`to`='".intval($_SESSION['_config']['notarise']['id'])."' AND
 						`awarded`='".intval($awarded)."' AND
 						`location`='".mysql_real_escape_string(stripslashes($_POST['location']))."' AND
-						`date`='".mysql_real_escape_string(stripslashes($_POST['date']))."' AND
+						`date`='".$postDate."' AND
 						`deleted`=0";
 		$res = mysql_query($query);
 		if(mysql_num_rows($res) > 0)
@@ -367,7 +368,7 @@ $iecho= "c";
 						`to`='".intval($_SESSION['_config']['notarise']['id'])."',
 						`points`='".intval($newpoints)."', `awarded`='".intval($awarded)."',
 						`location`='".mysql_real_escape_string(stripslashes($_POST['location']))."',
-						`date`='".mysql_real_escape_string(stripslashes($_POST['date']))."',
+						`date`='".$postDate."',
 						`when`=NOW()";
 		//record active acceptance by Assurer
 		if (check_date_format(trim($_REQUEST['date']),2010)) {
@@ -392,7 +393,7 @@ $iecho= "c";
 							`to`='".intval($_SESSION['profile']['id'])."',
 							`points`='".intval($addpoints)."', `awarded`='".intval($addpoints)."',
 							`location`='".mysql_real_escape_string(stripslashes($_POST['location']))."',
-							`date`='".mysql_real_escape_string(stripslashes($_POST['date']))."',
+							`date`='".$postDate."',
 							`method`='Administrative Increase',
 							`when`=NOW()";
 			mysql_query($query);
