@@ -93,10 +93,12 @@
 
 	if($name == "")
 		$name = $row['name'];
+	$oldLongitude = "";
+	$oldLatitude = "";
 	if(!array_key_exists('longitude',$_REQUEST) || $_REQUEST['longitude'] == "")
-		$_REQUEST['longitude'] = $row['long'];
+		$oldLongitude = $row['long'];
 	if(!array_key_exists('latitude',$_REQUEST) || $_REQUEST['latitude'] == "")
-		$_REQUEST['latitude'] = $row['lat'];
+		$oldLatitude = $row['lat'];
 ?>
 <form method="post" action="account.php">
 <table align="center" valign="middle" border="0" cellspacing="0" cellpadding="0" class="wrapper">
@@ -109,11 +111,11 @@
   </tr>
   <tr>
     <td class="DataTD"><?=_("Longitude")?>:</td>
-    <td class="DataTD"><input type="text" name="longitude" value="<?=sanitizeHTML($_REQUEST['longitude'])?>"></td>
+    <td class="DataTD"><input type="text" name="longitude" value="<?=sanitizeHTML($oldLongitude)?>"></td>
   </tr>
   <tr>
     <td class="DataTD"><?=_("Latitude")?>:</td>
-    <td class="DataTD"><input type="text" name="latitude" value="<?=sanitizeHTML($_REQUEST['latitude'])?>"></td>
+    <td class="DataTD"><input type="text" name="latitude" value="<?=sanitizeHTML($oldLatitude)?>"></td>
   </tr>
   <tr>
     <td class="DataTD" colspan="2"><input type="submit" name="process" value="<?=_("Update")?>"></td>
@@ -170,7 +172,7 @@ document.getElementById("display1").style.display = "none";
 <? } if($locid > 0 && $_REQUEST['action'] == "move") {
 	$query = "select * from `locations` where `id`='$locid'";
 	$row = mysql_fetch_assoc(mysql_query($query));
-	$newreg = $_REQUEST['newreg'] = $row['regid'];
+	$newreg = $row['regid'];
 ?>
 <form method="post" action="account.php">
 <table align="center" valign="middle" border="0" cellspacing="0" cellpadding="0" class="wrapper">
@@ -190,7 +192,7 @@ document.getElementById("display1").style.display = "none";
 	while($row = mysql_fetch_assoc($res))
 	{
 		echo "<option value='".intval($row['id'])."'";
-		if($_REQUEST['newreg'] == $row['id'])
+		if($newreg == $row['id'])
 			echo " selected='selected'";
 		echo ">$row[name]</option>\n";
 	}

@@ -61,7 +61,8 @@ document.f.location.focus();
 // -->
 </script>
 <? } else {
-	if(intval($_REQUEST['location']) == 0)
+	$locid = intval($_REQUEST['location']);
+	if($locid == 0)
 	{
 		$bits = explode(",", $_REQUEST['location']);
 
@@ -85,12 +86,11 @@ document.f.location.focus();
 		if(mysql_num_rows($res) <= 0)
 			die(_("Unable to find suitable location"));
 		$row = mysql_fetch_assoc($res);
-		$_REQUEST['location'] = $row['locid'];
+		$locid = $row['locid'];
 	}
 
 	$maxdist = intval($_REQUEST['maxdist']);
 
-	$locid = intval($_REQUEST['location']);
 	$query = "select * from `locations` where `id`='$locid'";
 	$loc = mysql_fetch_assoc(mysql_query($query));
 	if($maxdist <= 10)

@@ -17,7 +17,8 @@
 */
 
 if(array_key_exists('location',$_REQUEST) && $_REQUEST['location'] != "") { 
-	if(intval($_REQUEST['location']) == 0)
+	$locid = intval($_REQUEST['location']);
+	if($locid == 0)
 	{
 		$bits = explode(",", $_REQUEST['location']);
 
@@ -41,10 +42,9 @@ if(array_key_exists('location',$_REQUEST) && $_REQUEST['location'] != "") {
                         die("Unable to find suitable location");
 
 		$row = mysql_fetch_assoc($res);
-		$_REQUEST['location'] = $row['locid'];
+		$locid = $row['locid'];
 	}
 
-	$locid = intval($_REQUEST['location']);
 	$query = "select * from `locations` where `id`='$locid'";
 	$res = mysql_query($query);
 	if(mysql_num_rows($res) > 0)
