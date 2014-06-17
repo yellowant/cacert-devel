@@ -32,10 +32,10 @@ if (isset($_SESSION['ticketmsg'])) {
 }
 
 
+$userid = 0;
 // search for an account by email search, if more than one is found display list to choose
 if(intval(array_key_exists('userid',$_REQUEST)?$_REQUEST['userid']:0) <= 0)
 {
-    $_REQUEST['userid'] = 0;
 
     $emailsearch = $email = mysql_real_escape_string(stripslashes($_REQUEST['email']));
 
@@ -103,15 +103,16 @@ if(intval(array_key_exists('userid',$_REQUEST)?$_REQUEST['userid']:0) <= 0)
 <?
     } elseif(mysql_num_rows($res) == 1) {
         $row = mysql_fetch_assoc($res);
-        $_REQUEST['userid'] = $row['id'];
+        $userid = intval($row['id']);
     } else {
         printf(_("No users found matching %s"), sanitizeHTML($email));
     }
+}else{
+	$userid = intval($_REQUEST['userid']);
 }
 
 // display user information for given user id
-if(intval($_REQUEST['userid']) > 0) {
-    $userid = intval($_REQUEST['userid']);
+if($userid > 0) {
     $res =get_user_data($userid);
     if(mysql_num_rows($res) <= 0) {
         echo _("I'm sorry, the user you were looking for seems to have disappeared! Bad things are afoot!");
@@ -148,7 +149,7 @@ if(intval($_REQUEST['userid']) > 0) {
 //Ticket number
 ?>
 
-<form method="post" action="account.php?id=43&userid=<?=intval($_REQUEST['userid'])?>">
+<form method="post" action="account.php?id=43&userid=<?=$userid?>">
     <table align="center" valign="middle" border="0" cellspacing="0" cellpadding="0" class="wrapper">
         <tr>
             <td colspan="2" class="title"><?=_('Ticket handling') ?></td>

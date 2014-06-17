@@ -33,7 +33,7 @@
 		$display = "<ul class='top'>\n<li>\n".
 			"<a href='account.php?id=53&amp;regid=$regid'>".sanitizeHTML($reg['name'])."</a> - <a href='account.php?action=add&amp;id=54&amp;regid=$regid'>"._("Add")."</a>\n".
 			$display;
-		$ccid = $_REQUEST['ccid'] = intval($reg['ccid']);
+		$ccid = intval($reg['ccid']);
 	}
 
 	if($ccid > 0)

@@ -56,7 +56,7 @@
 </table><br><br>
 <?		} elseif(mysql_num_rows($res) == 1) {
 			$row = mysql_fetch_assoc($res);
-			$_GET['userid'] = intval($row['id']);
+			$userid = intval($row['id']);
 		} else {
 			?><table align="center" valign="middle" border="0" cellspacing="0" cellpadding="0" class="wrapper">
 				<tr>
@@ -92,7 +92,7 @@
 </table><br><br>
 <?		} elseif(mysql_num_rows($res) == 1) {
 			$row = mysql_fetch_assoc($res);
-			$_GET['userid'] = intval($row['id']);
+			$userid = intval($row['id']);
 		} else {
 			?><table align="center" valign="middle" border="0" cellspacing="0" cellpadding="0" class="wrapper">
 				<tr>
@@ -104,7 +104,7 @@
 
 	if($userid > 0)
 	{
-		header("location: account.php?id=43&userid=".intval($_GET['userid']));
+		header("location: account.php?id=43&userid=".intval($userid));
 		exit;
 	}
 ?>
