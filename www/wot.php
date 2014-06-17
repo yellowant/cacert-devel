@@ -336,7 +336,6 @@ $iecho= "c";
 		$res = mysql_query($query);
 		$drow = mysql_fetch_assoc($res);
 
-		$_POST['expire'] = 0;
 
 		if(($drow['total'] + $newpoints) > 100 && $max < 100)
 			$newpoints = 100 - $drow['total'];
