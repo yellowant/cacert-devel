@@ -38,10 +38,10 @@ my $ver=1;
 
 my $paranoid=1;
 
-my $debug=0;
+my $debug=1;
 
-#my $serialport="/dev/ttyS0";
-my $serialport="/dev/ttyUSB0";
+my $serialport="/dev/ttyS1";
+#my $serialport="/dev/ttyUSB0";
 
 my $gpgbin="/usr/bin/gpg";
 
