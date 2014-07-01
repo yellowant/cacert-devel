@@ -569,6 +569,8 @@ function buildSubjectFromSession() {
 		$id = 8;
 		$addy = array();
 		$adds = array();
+
+		putenv("LANG=C.UTF-8"); // for shitty bin stuff
 		if(strtolower(substr($newdom, -4, 3)) != ".jp")
 			$adds = explode("\n", trim(shell_exec("/usr/bin/whois $newdom|grep \"@\"")));
 		if(substr($newdomain, -4) == ".org" || substr($newdomain, -5) == ".info")
