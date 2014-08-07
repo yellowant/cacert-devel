@@ -333,7 +333,7 @@ require_once('../includes/lib/l10n.php');
 			}
 			if (checkpwlight($pword) < 3)
 				$_SESSION['_config']['oldlocation'] = "account.php?id=14&force=1";
-			if($_SESSION['_config']['oldlocation'] != "")
+			if(isset($_SESSION['_config']['oldlocation']) && $_SESSION['_config']['oldlocation'] != "")
 				header("location: https://".$_SERVER['HTTP_HOST']."/".$_SESSION['_config']['oldlocation']);
 			else
 				header("location: https://".$_SERVER['HTTP_HOST']."/account.php");
