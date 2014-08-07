@@ -2610,8 +2610,8 @@ function buildSubjectFromSession() {
 		$newreg = intval(array_key_exists('newreg',$_REQUEST)?$_REQUEST['newreg']:0);
 		$locid = intval(array_key_exists('locid',$_REQUEST)?$_REQUEST['locid']:0);
 		$name = array_key_exists('name',$_REQUEST)?mysql_real_escape_string(strip_tags($_REQUEST['name'])):"";
-		$long = array_key_exists('longitude',$_REQUEST)?ereg_replace("[^-0-9\.]","",$_REQUEST['longitude']):"";
-		$lat = array_key_exists('latitude', $_REQUEST)?ereg_replace("[^-0-9\.]","",$_REQUEST['latitude']):"";
+		$long = array_key_exists('longitude',$_REQUEST)?preg_replace("/[^-0-9\.]/","",$_REQUEST['longitude']):"";
+		$lat = array_key_exists('latitude', $_REQUEST)?preg_replace("/[^-0-9\.]/","",$_REQUEST['latitude']):"";
 		$action = array_key_exists('action',$_REQUEST)?$_REQUEST['action']:"";
 
 		if($locid > 0 && $action == "edit")

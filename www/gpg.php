@@ -458,11 +458,11 @@ function verifyEmail($email)
 			elseif($buffer == "[GNUPG:] GOT_IT\n")
 			{
 			}
-			elseif(ereg("^\[GNUPG:\] GET_BOOL keyedit\.remove\.uid\.okay\s*",$buffer))
+			elseif(preg_match("/^\[GNUPG:\] GET_BOOL keyedit\.remove\.uid\.okay\s*/",$buffer))
 			{
 				fputs($pipes[0],"yes\n");
 			}
-			elseif(ereg("^\[GNUPG:\] GET_LINE keyedit\.prompt\s*",$buffer))
+			elseif(preg_match("/^\[GNUPG:\] GET_LINE keyedit\.prompt\s*/",$buffer))
 			{
 				if(count($ToBeDeleted)>0)
 				{
@@ -480,7 +480,7 @@ function verifyEmail($email)
 			elseif($buffer == "[GNUPG:] GOOD_PASSPHRASE\n")
 			{
 			}
-			elseif(ereg("^\[GNUPG:\] KEYEXPIRED ",$buffer))
+			elseif(preg_match("/^\[GNUPG:\] KEYEXPIRED /",$buffer))
 			{
 				echo "Key expired!\n";
 				exit;
