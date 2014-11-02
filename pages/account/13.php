@@ -51,23 +51,23 @@
   </tr>
 <? if($_SESSION['profile']['points'] == 0) { ?>
   <tr>
-    <td class="DataTD" width="125"><?=_("First Name")?>: </td>
-    <td class="DataTD" width="125"><input type="text" name="fname" value="<?=sanitizeHTML($user['fname'])?>"></td>
+    <td class="DataTD" width="125"><label for='fname'><?=_("First Name")?></label>: </td>
+    <td class="DataTD" width="125"><input id='fname' type="text" name="fname" value="<?=sanitizeHTML($user['fname'])?>"></td>
   </tr>
   <tr>
-    <td class="DataTD" valign="top"><?=_("Middle Name(s)")?><br>
+    <td class="DataTD" valign="top"><label for='mname'><?=_("Middle Name(s)")?></label><br>
       (<?=_("optional")?>)
     </td>
-    <td class="DataTD"><input type="text" name="mname" value="<?=sanitizeHTML($user['mname'])?>"></td>
+    <td class="DataTD"><input type="text" id="mname" name="mname" value="<?=sanitizeHTML($user['mname'])?>"></td>
   </tr>
   <tr>
-    <td class="DataTD"><?=_("Last Name")?>: </td>
-    <td class="DataTD"><input type="text" name="lname" value="<?=sanitizeHTML($user['lname'])?>"></td>
+    <td class="DataTD"><label for="lname"><?=_("Last Name")?></label>: </td>
+    <td class="DataTD"><input type="text" id="lname" name="lname" value="<?=sanitizeHTML($user['lname'])?>"></td>
   </tr>
   <tr>
-    <td class="DataTD"><?=_("Suffix")?><br>
+    <td class="DataTD"><label for="suffix"><?=_("Suffix")?></label><br>
       (<?=_("optional")?>)</td>
-    <td class="DataTD"><input type="text" name="suffix" value="<?=sanitizeHTML($user['suffix'])?>"></td>
+    <td class="DataTD"><input type="text" id="suffix" name="suffix" value="<?=sanitizeHTML($user['suffix'])?>"></td>
   </tr>
   <tr>
     <td class="DataTD"><?=_("Date of Birth")?><br>
