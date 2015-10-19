@@ -409,12 +409,12 @@ function send_reminder()
 
 		$body .= sprintf(_("You were issued %s assurance points and you now have %s assurance points in total."), $awarded, ($awarded + $drow_points))."\n\n";
 
-		if(($drow_points + $awarded) < 100 && ($drow_points + $awarded) >= 50)
+		if(($drow_points + $awarded) >= 50 && $drow_points < 50)
 		{
 			$body .= _("You now have over 50 points, and can now have your name added to client certificates, and issue server certificates for up to 2 years.")."\n\n";
 		}
 
-		if(($drow_points + $awarded) >= 100 && $drow_points < 0 && !is_assurer(intval($_SESSION['_config']['notarise']['id'])) )
+		if(($drow_points + $awarded) >= 100 && $drow_points < 100 && !is_assurer(intval($_SESSION['_config']['notarise']['id'])) )
 		{
 			$body .= _("You have at least 100 Assurance Points, if you want to become an assurer try the Assurer Challenge")." ( https://cats.cacert.org )\n\n";
 			$body .= _("To make it easier for others in your area to find you, it's helpful to list yourself as an assurer (this is voluntary), as well as a physical location where you live or work the most. You can flag your account to be listed, and add a comment to the display by going to:")."\n";
