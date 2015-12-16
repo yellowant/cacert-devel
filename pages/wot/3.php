@@ -36,7 +36,7 @@
        <li><?=_("The signature of the assuree")?></li>
        <li><?=_("The date of the signature")?></li>
       </ul></li>
-   <li><?=("At least one government issued photo identification document (ID-Card, drivers license, passport, ...) of the assuree has to be checked by the assurer. We prefer and advise to check two such documents, if possible.")?></li>
+   <li><?=_("At least one government issued photo identification document (ID-Card, drivers license, passport, ...) of the assuree has to be checked by the assurer. We prefer and advise to check two such documents, if possible.")?></li>
 </ul>
 <ul>
    <li><?=_("The assurer has to compare the data of the document with the data entered in the CAP-form. Missing data needs to be added. The signatures on the documents and CAP-form should be compared. The photo should match the person. If there is any doubt in those points, the assurer should consider to either reduce the points (for minor issues) or decide to refuse to finish the assurance at all.")?></li>
